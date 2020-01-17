@@ -1,0 +1,12 @@
+.Toolbar {
+    background-color: #2E4053;
+    padding: 0 20px;
+    z-index: 90;
+    box-sizing: border-box;
+}
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
+}

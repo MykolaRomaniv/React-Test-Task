@@ -1,0 +1,21 @@
+.AppItem {
+    display: flex;
+    height: 20vh;
+    margin: 10px 0;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #aaa;
+    box-shadow: 0 2px 3px #ccc;
+    img {
+        height: 80%;
+        width: auto;
+    }
+
+    button {
+        width: max-content;
+    }
+
+    p {
+        font-weight: bold;
+    }
+}
