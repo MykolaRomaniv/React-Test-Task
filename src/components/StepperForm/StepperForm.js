@@ -4,42 +4,44 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import { withStyles } from '@material-ui/styles';
 import classes from "./StepperForm.module.scss";
 import Welcome from "./Steps/Step0Welcome/Welcome";
 import Branding from "./Steps/Step1Branding/Branding";
 import Info from "./Steps/Step2Info/Info";
 import Features from "./Steps/Step3Features/Features";
 import Preview from "./Steps/Step4Preview/Preview";
-
-// const styles = theme => ({
-//   root: {
-//     width: "100%"
-//   },
-//   backButton: {
-//     marginRight: theme.spacing.unit
-//   },
-//   instructions: {
-//     marginTop: theme.spacing.unit,
-//     marginBottom: theme.spacing.unit
-//   }
-// });
-
+import {writeData} from '../../database/config';
 class StepperForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      activeStep: 0,
-      appName: "",
-      appDescription: "",
-      picture: [],
-      color: "#fff",
-      catChecked: true,
-      mapChecked: true
-    };
+  constructor(props) {
+    super(props);
+    if (this.props.appIndex === null) {
+      this.state = {
+        activeStep: 0,
+        appName: "",
+        appDescription: "",
+        picture: "",
+        color: "#fff",
+        catChecked: true,
+        mapChecked: true
+      };
+    } else {
+      this.state = {activeStep:0, ...this.props.apps[this.props.appIndex] };
+    }
     this.onDropHandler = this.onDropHandler.bind(this);
     this.steps = this.getSteps();
   }
+
+  // componentDidMount = () => {
+  //   this.setState({ ...getData() });
+  // };
+
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   // check on previous state
+  //   // only write when it's different with the new state
+  //   if (prevState !== this.state) {
+  //     this.writeData();
+  //   }
+  // };
 
   nameChangeHandler = event => {
     this.setState({
@@ -47,9 +49,9 @@ class StepperForm extends Component {
     });
   };
 
-  onDropHandler = (pictureFiles, pictureDataURLs) => {
+  onDropHandler = (pictureFiles, pictureDataURL) => {
     this.setState({
-      picture: this.state.picture.concat(pictureFiles)
+      picture: pictureDataURL
     });
   };
 
@@ -144,6 +146,18 @@ class StepperForm extends Component {
     });
   };
 
+  finishHandler = () => {
+    const { activeStep, ...app } = { ...this.state };
+    let dbData = [...this.props.apps];
+    if (this.props.appIndex === null) {
+      dbData.push(app);
+    } else {
+      dbData[this.props.appIndex] = app;
+    }
+    writeData(dbData);
+    this.handleNext();
+  };
+
   render() {
     return (
       <div className={classes.root}>
@@ -164,9 +178,7 @@ class StepperForm extends Component {
             </div>
           ) : (
             <div>
-              {/* <Typography className={classes.instructions}> */}
               <form>{this.getStepContent(this.state.activeStep)}</form>
-              {/* </Typography> */}
               <div>
                 <Button
                   disabled={this.state.activeStep === 0}
@@ -178,7 +190,11 @@ class StepperForm extends Component {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={this.handleNext}
+                  onClick={
+                    this.state.activeStep === this.steps.length - 1
+                      ? this.finishHandler
+                      : this.handleNext
+                  }
                 >
                   {this.state.activeStep === this.steps.length - 1
                     ? "Finish"

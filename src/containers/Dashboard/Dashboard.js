@@ -1,38 +1,85 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Auxiliary/Auxiliary";
 import AppList from "../../components/AppList/AppList";
-import appSampleImg from "../../assets/app_sample.png";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
-import AppEditor from '../../components/AppEditor/AppEditor';
+import AppEditor from "../../components/AppEditor/AppEditor";
+import db from '../../database/config';
 
-const APP_LIST = [
-  { img: appSampleImg, name: "First app" },
-  { img: appSampleImg, name: "Second app" }
-];
+/**
+ * App = {
+ *  appName: "",
+    appDescription: "",
+    picture: "",
+    color: "#fff",
+    catChecked: true,
+    mapChecked: true
+ * }
+ */
 
 class dashboard extends Component {
-  state = {
-    editorOpened: true
-  };
+  constructor() {
+    super();
+    this.state = {
+      editorOpened: false,
+      currentAppIndex: null, 
+      apps: null
+    };
+  }
 
-  openHandle = () => {
-    this.setState({
-      editorOpened: true
+  componentDidMount() {
+    this.getData();
+  }
+
+  componentShould
+
+  getData = () => {
+    let ref = db.database().ref('/');
+    ref.on('value', snapshot => {
+      const apps = snapshot.val();
+      this.setState({
+        apps: [...apps]
+      });
     });
+    console.log('DATA RETRIEVED');
+  }
+
+  openHandle = appIndex => {
+    this.setState({
+      currentAppIndex: appIndex,
+      editorOpened: true
+    })
   };
 
   closeHandle = () => {
     this.setState({
+      currentAppIndex: null,
       editorOpened: false
     });
   };
 
+  updateAppsHandler = (app) => {
+    const newApps = [...this.state.apps];
+    if(this.state.currentAppIndex === null) {
+      newApps.push(app);
+    } else {
+      newApps[this.state.currentAppIndex] = app;
+    }
+    this.setState({
+      apps: newApps
+    })
+  }
+
   render() {
     return (
       <Aux>
-        <AppEditor opened={this.state.editorOpened} closed={this.closeHandle} />
+        <AppEditor
+          isOpened={this.state.editorOpened}
+          onClose={this.closeHandle}
+          appIndex={this.state.currentAppIndex}
+          apps={this.state.apps}
+        />
         <DashboardHeader editorOpened={this.openHandle} />
-        <AppList apps={APP_LIST} editorOpened={this.openHandle} />
+        <AppList apps={this.state.apps} editorOpened={this.openHandle} />
       </Aux>
     );
   }

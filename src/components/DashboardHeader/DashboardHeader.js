@@ -7,7 +7,7 @@ const dashboardHeader = (props) => {
     return (
         <div className={classes.top}>
         <h1>My Dashboard</h1>
-        <Button variant="outlined" color="primary" startIcon={<AddIcon />} onClick={props.editorOpened}>
+        <Button variant="outlined" color="primary" startIcon={<AddIcon />} onClick={() => props.editorOpened(null)}>
           Create App
         </Button>
     </div>

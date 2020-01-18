@@ -3,7 +3,7 @@ import React from "react";
 const preview = props => {
   return (
     <div>
-      <img src={URL.createObjectURL(props.picture[0])} alt="app" />
+      <img src={props.picture} alt="app" />
       <p>
         Accent: <span style={{ color: props.color }}>{props.color}</span>
       </p>
