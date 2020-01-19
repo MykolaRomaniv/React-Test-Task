@@ -2,13 +2,14 @@ import React from 'react';
 import categoriesImg from "../../../../assets/categories.jpg";
 import mapImg from "../../../../assets/map.jpg";
 import Switch from "@material-ui/core/Switch";
+import classes from './Features.module.scss';
 
 const features = (props) => {
     return (
-        <div style={{display: 'flex'}}>
+        <div className={[classes.Features, classes.twoColumn].join(" ")}>
         <div>
           <img src={categoriesImg} alt="categories" />
-          <p>Categories</p>
+          <p className={classes.boldTitle}>Categories</p>
           <p>Include more than one list or categories.</p>
           <Switch
             checked={props.catChecked}
@@ -19,7 +20,7 @@ const features = (props) => {
         </div>
         <div>
           <img src={mapImg} alt="categories" />
-          <p>GPS maps</p>
+          <p className={classes.boldTitle}>GPS maps</p>
           <p>Include a GPS map</p>
           <Switch
             checked={props.mapChecked}

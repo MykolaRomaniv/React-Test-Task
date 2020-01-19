@@ -1,8 +1,9 @@
 import React from "react";
+import classes from './Preview.module.scss';
 
 const preview = props => {
   return (
-    <div>
+    <div className={classes.Preview}>
       <img src={props.picture} alt="app" />
       <p>
         Accent: <span style={{ color: props.color }}>{props.color}</span>

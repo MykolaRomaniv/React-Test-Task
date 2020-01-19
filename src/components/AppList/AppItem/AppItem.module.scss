@@ -1,21 +1,31 @@
 .AppItem {
     display: flex;
+    flex-wrap: wrap;
     height: 20vh;
     margin: 10px 0;
     justify-content: space-around;
     align-items: center;
     border-top: 1px solid #aaa;
     box-shadow: 0 2px 3px #ccc;
+    height: fit-content;
+    
     img {
         height: 80%;
-        width: auto;
+        max-width: 100%;
     }
 
     button {
+        margin: 5px;
         width: max-content;
     }
 
     p {
         font-weight: bold;
+    }
+}
+
+@media (max-width: 500px) {
+    .AppItem {
+        flex-flow: column;
     }
 }

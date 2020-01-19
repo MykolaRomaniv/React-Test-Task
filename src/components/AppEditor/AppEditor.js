@@ -6,10 +6,11 @@ import StepperForm from "../StepperForm/StepperForm";
 const appEditor = (props) => {
   return (
     <Modal
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
+      // aria-labelledby="simple-modal-title"
+      // aria-describedby="simple-modal-description"
       open={props.isOpened}
       onClose={props.onClose}
+      className={classes.Modal}
     >
       <div className={classes.AppEditor}>
         <StepperForm

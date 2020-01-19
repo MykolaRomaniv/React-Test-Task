@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
@@ -10,7 +9,9 @@ import Branding from "./Steps/Step1Branding/Branding";
 import Info from "./Steps/Step2Info/Info";
 import Features from "./Steps/Step3Features/Features";
 import Preview from "./Steps/Step4Preview/Preview";
-import {writeData} from '../../database/config';
+import { writeData } from "../../database/config";
+import Stepper from '../../hoc/Stepper/Stepper';
+
 class StepperForm extends Component {
   constructor(props) {
     super(props);
@@ -25,23 +26,11 @@ class StepperForm extends Component {
         mapChecked: true
       };
     } else {
-      this.state = {activeStep:0, ...this.props.apps[this.props.appIndex] };
+      this.state = { activeStep: 0, ...this.props.apps[this.props.appIndex] };
     }
     this.onDropHandler = this.onDropHandler.bind(this);
     this.steps = this.getSteps();
   }
-
-  // componentDidMount = () => {
-  //   this.setState({ ...getData() });
-  // };
-
-  // componentDidUpdate = (prevProps, prevState) => {
-  //   // check on previous state
-  //   // only write when it's different with the new state
-  //   if (prevState !== this.state) {
-  //     this.writeData();
-  //   }
-  // };
 
   nameChangeHandler = event => {
     this.setState({
@@ -161,7 +150,11 @@ class StepperForm extends Component {
   render() {
     return (
       <div className={classes.root}>
-        <Stepper activeStep={this.state.activeStep} alternativeLabel>
+        <Stepper
+          stepsLength={this.steps.length}
+          activeStep={this.state.activeStep}
+          mobile={window.screen.width < 500}
+          classes={classes.Stepper}>
           {this.steps.map(label => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>

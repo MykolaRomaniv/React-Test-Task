@@ -35,9 +35,12 @@ class dashboard extends Component {
   getData = () => {
     let ref = db.database().ref('/');
     ref.on('value', snapshot => {
-      const apps = snapshot.val();
+      let apps = snapshot.val();
+      if (!apps) {
+        apps = [];
+      }
       this.setState({
-        apps: [...apps]
+        apps: apps
       });
     });
     console.log('DATA RETRIEVED');

@@ -11,16 +11,10 @@ const firebaseConfig = {
     appId: "1:809016653403:web:9a7b096755b32e5e9b317e"
 };
 
-// const apps = [
-//     {appName: 'name', appDesc:'desc'}, 
-//     {appName: 'app2', appDesc: 'desc2'}
-// ]
-
 firebase.initializeApp(firebaseConfig);
 
 const writeData = (data) => {
     firebase.database().ref('/').set(data);
-    console.log('DATA SAVED');
 }
 
 const getData = () => {
@@ -30,13 +24,9 @@ const getData = () => {
         const state = snapshot.val();
         data = state;
     });
-    console.log('DATA RETRIEVED', data);
+
     return data;
 }
 
-// writeData(apps);
-
-// let data = getData();
-// console.log(data);
 export {writeData, getData};
 export default firebase;
