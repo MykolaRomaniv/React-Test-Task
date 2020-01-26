@@ -17,16 +17,7 @@ const writeData = (data) => {
     firebase.database().ref('/').set(data);
 }
 
-const getData = () => {
-    let ref = firebase.database().ref('/');
-    let data;
-    ref.once('value', snapshot => {
-        const state = snapshot.val();
-        data = state;
-    });
+//TODO implement getData
 
-    return data;
-}
-
-export {writeData, getData};
+export {writeData};
 export default firebase;
