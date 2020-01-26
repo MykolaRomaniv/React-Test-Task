@@ -1,6 +1,6 @@
-import React from "react";
-import TextField from "@material-ui/core/TextField";
-import classes from "./Welcome.module.scss";
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import classes from './Welcome.module.scss';
 
 const welcome = (props) => {
   return (

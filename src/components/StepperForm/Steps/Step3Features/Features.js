@@ -1,12 +1,12 @@
 import React from 'react';
-import categoriesImg from "../../../../assets/categories.jpg";
-import mapImg from "../../../../assets/map.jpg";
-import Switch from "@material-ui/core/Switch";
+import categoriesImg from '../../../../assets/categories.jpg';
+import mapImg from '../../../../assets/map.jpg';
+import Switch from '@material-ui/core/Switch';
 import classes from './Features.module.scss';
 
 const features = (props) => {
     return (
-        <div className={[classes.Features, classes.twoColumn].join(" ")}>
+        <div className={[classes.Features, classes.twoColumn].join(' ')}>
         <div>
           <img src={categoriesImg} alt="categories" />
           <p className={classes.boldTitle}>Categories</p>

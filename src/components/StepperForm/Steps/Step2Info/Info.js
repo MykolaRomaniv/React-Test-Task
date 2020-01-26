@@ -1,6 +1,6 @@
 import React from 'react';
-import TextField from "@material-ui/core/TextField";
-import GoogleMapReact from "google-map-react";
+import TextField from '@material-ui/core/TextField';
+import GoogleMapReact from 'google-map-react';
 import classes from './Info.module.scss';
 
 const DEFAULT_PROPS = {

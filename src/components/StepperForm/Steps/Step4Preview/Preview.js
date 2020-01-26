@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import classes from './Preview.module.scss';
 
 const preview = props => {

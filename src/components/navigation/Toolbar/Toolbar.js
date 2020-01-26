@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import classes from './Toolbar.module.scss';
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';

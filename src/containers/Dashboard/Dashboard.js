@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import Aux from "../../hoc/Auxiliary/Auxiliary";
-import AppList from "../../components/AppList/AppList";
-import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
-import AppEditor from "../../components/AppEditor/AppEditor";
+import React, { Component } from 'react';
+import Aux from '../../hoc/Auxiliary/Auxiliary';
+import AppList from '../../components/AppList/AppList';
+import DashboardHeader from '../../components/DashboardHeader/DashboardHeader';
+import AppEditor from '../../components/AppEditor/AppEditor';
 import db from '../../database/config';
 
 /**
  * App = {
- *  appName: "",
-    appDescription: "",
-    picture: "",
-    color: "#fff",
+ *  appName: '',
+    appDescription: '',
+    picture: '',
+    color: '#fff',
     catChecked: true,
     mapChecked: true
  * }

@@ -1,6 +1,6 @@
-import React from "react";
-import ImageUploader from "react-images-upload";
-import { SketchPicker } from "react-color";
+import React from 'react';
+import ImageUploader from 'react-images-upload';
+import { SketchPicker } from 'react-color';
 import classes from './Branding.module.scss';
 
 const branding = (props) => {
@@ -12,7 +12,7 @@ const branding = (props) => {
           withIcon={true}
           buttonText="Choose images"
           onChange={props.onDrop}
-          imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
           maxFileSize={5242880}
           singleImage
           withPreview

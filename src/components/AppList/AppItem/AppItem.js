@@ -1,5 +1,5 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
+import React from 'react';
+import Button from '@material-ui/core/Button';
 import classes from './AppItem.module.scss';
 
 const appItem = props => {

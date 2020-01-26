@@ -1,14 +1,14 @@
-import React from "react";
-import Stepper from "@material-ui/core/Stepper";
-import MobileStepper from "@material-ui/core/MobileStepper";
+import React from 'react';
+import Stepper from '@material-ui/core/Stepper';
+import MobileStepper from '@material-ui/core/MobileStepper';
 
 const stepper = props => {
   if (props.mobile) {
     return (
       <MobileStepper
-        variant="dots"
+        variant='dots'
         steps={props.stepsLength}
-        position="static"
+        position='static'
         activeStep={props.activeStep}
         className={props.classes}
         style={{justifyContent: 'space-around'}}

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import classes from "./StepperForm.module.scss";
-import Welcome from "./Steps/Step0Welcome/Welcome";
-import Branding from "./Steps/Step1Branding/Branding";
-import Info from "./Steps/Step2Info/Info";
-import Features from "./Steps/Step3Features/Features";
-import Preview from "./Steps/Step4Preview/Preview";
-import { writeData } from "../../database/config";
+import React, { Component } from 'react';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import classes from './StepperForm.module.scss';
+import Welcome from './Steps/Step0Welcome/Welcome';
+import Branding from './Steps/Step1Branding/Branding';
+import Info from './Steps/Step2Info/Info';
+import Features from './Steps/Step3Features/Features';
+import Preview from './Steps/Step4Preview/Preview';
+import { writeData } from '../../database/config';
 import Stepper from '../../hoc/Stepper/Stepper';
 
 class StepperForm extends Component {
@@ -18,10 +18,10 @@ class StepperForm extends Component {
     if (this.props.appIndex === null) {
       this.state = {
         activeStep: 0,
-        appName: "",
-        appDescription: "",
-        picture: "",
-        color: "#fff",
+        appName: '',
+        appDescription: '',
+        picture: '',
+        color: '#fff',
         catChecked: true,
         mapChecked: true
       };
@@ -44,7 +44,7 @@ class StepperForm extends Component {
   };
 
   getSteps = () => {
-    return ["Welcome", "Branding", "Info", "Features", "Preview"];
+    return ['Welcome', 'Branding', 'Info', 'Features', 'Preview'];
   };
 
   colorChangeHandler = color => {
@@ -95,9 +95,9 @@ class StepperForm extends Component {
         return (
           <Features
             catChecked={this.state.catChecked}
-            catSwitchToggled={() => this.toggleSwitchHandler("catChecked")}
+            catSwitchToggled={() => this.toggleSwitchHandler('catChecked')}
             mapChecked={this.state.mapChecked}
-            mapSwitchToggled={() => this.toggleSwitchHandler("mapChecked")}
+            mapSwitchToggled={() => this.toggleSwitchHandler('mapChecked')}
           />
         );
       case 4:
@@ -112,7 +112,7 @@ class StepperForm extends Component {
           />
         );
       default:
-        return "Unknown stepIndex";
+        return 'Unknown stepIndex';
     }
   };
 

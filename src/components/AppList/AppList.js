@@ -1,12 +1,12 @@
-import React from "react";
-import AppItem from "./AppItem/AppItem";
+import React from 'react';
+import AppItem from './AppItem/AppItem';
 
 /**
  * App = {
- *  appName: "",
-    appDescription: "",
-    picture: "",
-    color: "#fff",
+ *  appName: '',
+    appDescription: '',
+    picture: '',
+    color: '#fff',
     catChecked: true,
     mapChecked: true
  * }
