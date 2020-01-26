@@ -28,7 +28,6 @@ class StepperForm extends Component {
     } else {
       this.state = { activeStep: 0, ...this.props.apps[this.props.appIndex] };
     }
-    this.onDropHandler = this.onDropHandler.bind(this);
     this.steps = this.getSteps();
   }
 
