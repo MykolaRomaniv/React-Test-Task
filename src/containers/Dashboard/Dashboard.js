@@ -30,8 +30,6 @@ class dashboard extends Component {
     this.getData();
   }
 
-  componentShould
-
   getData = () => {
     let ref = db.database().ref('/');
     ref.on('value', snapshot => {
